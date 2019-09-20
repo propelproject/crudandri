@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <div class="row" style="margin-top:10px">
+        <h2>Home</h2>
+        <hr />
+    </div>
+    <div class="row">
+        @if (Session["LogedUserId"] != null)
+        {
+            <div class="row" style="margin-top:40px">
+                <div class="col-md-12">
+                    <p style="font-size:15px">Selamat datang <text style="color:blue">@Session["LogedFirstname"] @Session["LogedLastname"]</text></p>
+                </div>
+                <div class="col-md-12">
+                    <p>Logout @Html.ActionLink("disini!", "Logout", "Home") </p>
+                </div>
+            </div>    
+        }
+        else
+        {
+            <div class="row" style="margin-top:40px">
+                <div class="col-md-12">
+                    <p>Anda belum masuk, silakan masuk @Html.ActionLink("disini!", "Login", "Home") </p>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+
+</html>

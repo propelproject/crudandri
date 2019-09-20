@@ -1,0 +1,66 @@
+﻿@model MayapadaCRUD.Models.User
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <title>Login</title>
+</head>
+
+<body>
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true);
+        <div class="row" style="margin-top:40px; margin-left:250px">
+            <img src="~/Content/Images/logo.jpg" alt="Logo" style="height:100px; width:400px" />
+        </div>
+
+        <div class="row" style="margin-top:30px; margin-left:250px; margin-bottom:20px">
+            <div class="col-md-8">
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Username</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(a => a.Username, new { @class = "form-control no-border", @placeholder = "Username" })
+                    </div>
+                    <div class="col-sm-4">
+                        <p style="color:red" >@Html.ValidationMessageFor(a => a.Username)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8" style="margin-bottom:20px">
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Password</label>
+                    <div class="col-sm-5">
+                        @Html.PasswordFor(a=> a.Password, new { @class = "form-control no-border", @placeholder="Password" })
+                    </div>
+                    <div class="col-sm-4">
+                        <p style="color:red"> @Html.ValidationMessageFor(a => a.Password)</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        <div class="row" style="margin-bottom:50px">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-sm"></label>
+                    <div class="col-sm-6" style="margin-left:420px">
+                        <button type="reset" id="btn-Cancel" class="btn btn-primary" style="font-size:15px inherit">Cancel </button>
+                        <button type="submit" id="btn-Submit" class="btn btn-primary" style="font-size:15px inherit">Login </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</body>
+</html>
+
+
+
